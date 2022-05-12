@@ -1,6 +1,6 @@
 # Bulletproofs in Python
 
-We use pyo3 to wrap the [bulletproof implementation by dalek-cryptography][https://github.com/dalek-cryptography/bulletproofs/blob/main/README.md] in python.
+We use pyo3 to wrap the [bulletproof implementation by dalek-cryptography](https://github.com/dalek-cryptography/bulletproofs/blob/main/README.md) in python.
 
 ## Dependency
 
