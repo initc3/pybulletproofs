@@ -1,11 +1,11 @@
 [package]
-name = "zkrp_pyo3"
-version = "0.1.0"
+name = "pybulletproofs"
+version = "0.1.0-dev4"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 [lib]
-name = "zkrp_pyo3"
+name = "pybulletproofs"
 crate-type = ["cdylib"]
 
 [dependencies]
