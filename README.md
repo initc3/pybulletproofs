@@ -1,6 +1,7 @@
 # Bulletproofs in Python
 [![PyPI version](https://badge.fury.io/py/pybulletproofs.svg)](https://badge.fury.io/py/pybulletproofs)
-[![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
+![PyPI - Format](https://img.shields.io/pypi/format/pybulletproofs)
+![PyPI - Status](https://img.shields.io/pypi/status/pybulletproofs)
 
 **WARNING**: Work-in-progress. Only meant for experimental purposes.
 
