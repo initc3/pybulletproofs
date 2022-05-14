@@ -1,0 +1,42 @@
+# based on:
+# https://github.com/milesgranger/pyrus-cramjam/blob/master/.github/workflows/CI.yml
+name: ci
+
+on:
+  pull_request:
+
+jobs:
+  linux:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.8', '3.9', '3.10']
+        target: [x86_64]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install Rust toolchain
+      uses: actions-rs/toolchain@v1
+      with:
+        toolchain: nightly
+        profile: minimal
+        default: true
+    - name: Install Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Build Wheels
+      uses: messense/maturin-action@v1
+      with:
+        rust-toolchain: nightly
+        target: ${{ matrix.target }}
+        manylinux: 2014
+        args: --interpreter python${{ matrix.python-version }} --release --out dist --no-sdist
+     - name: Install built wheel
+       if: matrix.target == 'x86_64'
+       run: |
+         pip install pybulletproofs --no-index --find-links dist --force-reinstall
+    - name: Upload wheels
+      uses: actions/upload-artifact@v2
+      with:
+        name: wheels
+        path: dist
