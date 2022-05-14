@@ -3,6 +3,9 @@
 name: ci
 
 on:
+  push:
+    branches:
+      - main
   pull_request:
 
 jobs:
@@ -40,3 +43,30 @@ jobs:
       with:
         name: wheels
         path: dist
+
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/')
+    needs: [ linux ]
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          name: wheels
+      - name: Publish to TestPyPI
+        if: github.event_name == 'pull_request'
+        uses: messense/maturin-action@v1
+        env:
+          MATURIN_REPOSITORY_URL: https://test.pypi.org/legacy/
+          MATURIN_PYPI_TOKEN: ${{ secrets.TEST_PYPI_TOKEN }}
+        with:
+          command: upload
+          args: --skip-existing *
+      - name: Publish to TestPyPI
+        if: github.event_name == 'push'
+        uses: messense/maturin-action@v1
+        env:
+          MATURIN_PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
+        with:
+          command: upload
+          args: --skip-existing *
