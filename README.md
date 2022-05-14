@@ -2,6 +2,7 @@
 [![PyPI version](https://badge.fury.io/py/pybulletproofs.svg)](https://badge.fury.io/py/pybulletproofs)
 ![PyPI - Format](https://img.shields.io/pypi/format/pybulletproofs)
 ![PyPI - Status](https://img.shields.io/pypi/status/pybulletproofs)
+[![ci](https://github.com/initc3/pybulletproofs/actions/workflows/ci.yml/badge.svg)](https://github.com/initc3/pybulletproofs/actions/workflows/ci.yml)
 
 **WARNING**: Work-in-progress. Only meant for experimental purposes.
 
