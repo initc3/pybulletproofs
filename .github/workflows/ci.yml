@@ -4,9 +4,6 @@ name: ci
 
 on:
   push:
-    branches:
-      - main
-    tags:
   pull_request:
 
 jobs:
@@ -54,7 +51,7 @@ jobs:
         with:
           name: wheels
       - name: Publish to TestPyPI
-        if: startsWith(github.ref, 'refs/tags') && github.event_name == 'pull_request'
+        if: startsWith(github.ref, 'refs/heads/release') && github.event_name == 'pull_request'
         uses: messense/maturin-action@v1
         env:
           MATURIN_REPOSITORY_URL: https://test.pypi.org/legacy/
