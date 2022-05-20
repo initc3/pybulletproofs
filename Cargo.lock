@@ -219,7 +219,7 @@ dependencies = [
 
 [[package]]
 name = "pybulletproofs"
-version = "0.1.0"
+version = "0.1.0-dev6"
 dependencies = [
  "bulletproofs",
  "curve25519-dalek-ng",
