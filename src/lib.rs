@@ -123,7 +123,7 @@ fn zkrp_prove(secret_value: u64, bits: usize) -> PyResult<(Vec<u8>, [u8; 32], [u
 }
 
 #[pyfunction]
-fn zkrp_verify(proof_bytes: Vec<u8>, committed_value_bytes: [u8; 32]) -> PyResult<bool> {
+fn zkrp_verify(proof_bytes: Vec<u8>, committed_value_bytes: [u8; 32], bits: usize) -> PyResult<bool> {
     // Generators for Pedersen commitments.  These can be selected
     // independently of the Bulletproofs generators.
     let pc_gens = PedersenGens::default();
@@ -136,7 +136,7 @@ fn zkrp_verify(proof_bytes: Vec<u8>, committed_value_bytes: [u8; 32]) -> PyResul
     let committed_value = CompressedRistretto(read32(&committed_value_bytes));
     // Verification requires a transcript with identical initial state:
     let mut verifier_transcript = Transcript::new(b"zkrp");
-    Ok(proof.verify_single(&bp_gens, &pc_gens, &mut verifier_transcript, &committed_value, 32).is_ok())
+    Ok(proof.verify_single(&bp_gens, &pc_gens, &mut verifier_transcript, &committed_value, bits).is_ok())
 }
 
 /// A Python module implemented in Rust.
