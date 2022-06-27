@@ -21,13 +21,13 @@ pip install pybulletproofs
 To test the python library, run the following proof and verification.
 
 ```bash
-from pybulletproofs import zkrp_prove, zkrp_verify
+from pybulletproofs import zkrp_prove, zkrp_verify_single
 
 proof1, comm1, _ = zkrp_prove(2022, 32)
 proof2, comm2, _ = zkrp_prove(2023, 32)
 
-assert zkrp_verify(proof1, comm1)
-assert !zkrp_verify(proof2, comm1)
+assert zkrp_verify_single(proof1, comm1)
+assert !zkrp_verify_single(proof2, comm1)
 ```
 
 ## Development
